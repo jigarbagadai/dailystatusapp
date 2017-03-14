@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Login/login.component'
+import { HeaderComponent } from './Header/header.component'
+import { LeftPanelComponent } from './leftpanel/leftpanel.component'
 
 @NgModule({
   declarations: [
