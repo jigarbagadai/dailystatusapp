@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+import { RouteNames } from '../../Services/routenames.service';
+
+@Component({
+  selector: 'app-exceptionreport',
+  templateUrl: 'exceptionreport.component.html'
+})
+export class ExceptionReportComponent {
+constructor(private _routeNames:RouteNames){
+    this._routeNames.name.next('Exception Report');;
+  }
+}

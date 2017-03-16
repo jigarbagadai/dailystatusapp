@@ -13,91 +13,49 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a routerLink="/dashboard" routerLinkActive="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                        <a routerLink="/timeentry" routerLinkActive="active"><i class="fa fa-edit fa-fw"></i> Time Entry</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><i class="fa fa-files-o fa-fw"></i> Reports<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">Flot Charts</a>
+                                <a routerLink="/report/time" routerLinkActive="active">Time Repors</a>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a routerLink="/report/audit" routerLinkActive="active">Audit Reports</a>
+                            </li>
+                            <li>
+                                <a routerLink="/report/exception" routerLinkActive="active">Exceltion Reports</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                        <a href="javascript:void(0)"><i class="fa fa-gears fa-fw"></i> Settings<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html">Panels and Wells</a>
+                                <a routerLink="/setting/role" routerLinkActive="active">Role</a>
                             </li>
                             <li>
-                                <a href="buttons.html">Buttons</a>
+                                <a routerLink="/setting/activity" routerLinkActive="active">Activity</a>
                             </li>
                             <li>
-                                <a href="notifications.html">Notifications</a>
+                                <a routerLink="/setting/roleactivity" routerLinkActive="active">Role Activity</a>
                             </li>
                             <li>
-                                <a href="typography.html">Typography</a>
-                            </li>
-                            <li>
-                                <a href="icons.html"> Icons</a>
-                            </li>
-                            <li>
-                                <a href="grid.html">Grid</a>
+                                <a routerLink="/setting/timezone" routerLinkActive="active">TimeZone</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-third-level -->
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a routerLink="/users" routerLinkActive="active"><i class="fa fa-users fa-fw"></i>Users</a>
                     </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="active" href="blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="login.html">Login Page</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                    <li>
+                        <a routerLink="/profile" routerLinkActive="active"><i class="fa fa-user fa-fw"></i>User Profile</a>
                     </li>
                 </ul>
             </div>
