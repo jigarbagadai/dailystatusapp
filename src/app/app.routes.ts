@@ -1,30 +1,24 @@
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './Login/login.component';
-import { DashboardComponent } from './Dashboard/dashboard.component';
-import { AuditReportComponent } from './Report/AuditReport/auditreport.component';
-import { ExceptionReportComponent } from './Report/ExceptionReport/exceptionreport.component';
-import { TimeReportComponent } from './Report/TimeReport/timereport.component';
-import { TimeEntryComponent } from './TimeEntry/timeentry.component';
-import { ActivityComponent } from './Setting/Activity/activity.component';
-import { RoleComponent } from './Setting/Role/role.component';
-import { RoleActivityComponent } from './Setting/RoleActivity/roleactivity.component';
-import { TimeZoneComponent } from './Setting/TimeZone/timezone.component';
-import { UsersComponent } from './Users/users.component';
-import { UserProfileComponent } from './UserProfile/userprofile.component';
+import { LoginComponent,DashboardComponent,AuditReportComponent,ExceptionReportComponent,TimeReportComponent,
+         TimeEntryComponent,ActivityComponent,RoleComponent,RoleActivityComponent,TimeZoneComponent,
+         UsersComponent,UserProfileComponent
+       } from './index';
+import { AuthGuard } from './Services/index';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'timeentry', component: TimeEntryComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'profile', component: UserProfileComponent },
-  { path: 'report/audit', component: AuditReportComponent },
-  { path: 'report/exception', component: ExceptionReportComponent },
-  { path: 'report/time', component: TimeReportComponent },
-  { path: 'setting/role', component: RoleComponent },
-  { path: 'setting/activity', component: ActivityComponent },
-  { path: 'setting/roleactivity', component: RoleActivityComponent },
-  { path: 'setting/timezone', component: TimeZoneComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'timeentry', component: TimeEntryComponent, canActivate: [AuthGuard] },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'report/audit', component: AuditReportComponent, canActivate: [AuthGuard] },
+  { path: 'report/exception', component: ExceptionReportComponent, canActivate: [AuthGuard] },
+  { path: 'report/time', component: TimeReportComponent, canActivate: [AuthGuard] },
+  { path: 'setting/role', component: RoleComponent, canActivate: [AuthGuard] },
+  { path: 'setting/activity', component: ActivityComponent, canActivate: [AuthGuard] },
+  { path: 'setting/roleactivity', component: RoleActivityComponent, canActivate: [AuthGuard] },
+  { path: 'setting/timezone', component: TimeZoneComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' }
 ]
 
 export const routing = RouterModule.forRoot(routes);

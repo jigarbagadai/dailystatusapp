@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouteNames } from '../../Services/routenames.service';
+import { RouteNames } from '../../Services/index';
 
 @Component({
   selector: 'app-timereport',

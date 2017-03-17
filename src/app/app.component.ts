@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
-import { RouteNames } from './Services/routenames.service';
+import { RouteNames,AuthGuard } from './Services/index';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,18 @@ import { RouteNames } from './Services/routenames.service';
 })
 export class AppComponent {
   routeName:any = "Dashboard";
-  constructor(private _routeNames:RouteNames){
+  displayHeader: boolean;
+  constructor(private _routeNames:RouteNames,private authService: AuthGuard, private router: Router){
     this._routeNames.name.subscribe(n => this.routeName = n);
+    this.router.events.subscribe(res => {
+      if (res.url === "/login") {
+        this.displayHeader = false;
+      }
+      else
+      {
+        this.displayHeader = true;
+      }
+    });
   }
 
   public title = 'app works!';
