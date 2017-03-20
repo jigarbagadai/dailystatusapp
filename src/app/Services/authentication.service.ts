@@ -15,15 +15,15 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-     var headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    return this.http.post(ApiUrlConstant.LOGINURL, { UserName: username, password: password, grant_type: 'password' }, {
-            headers: headers
-          })
+    return this.http.post(ApiUrlConstant.LOGINURL, 'username=' + username + '&password=' + password + '&grant_type=password', {
+      headers: headers
+    })
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let token = response.json() && response.json().token;
+        let token = response.json();
         if (token) {
           // set token property
           this.token = token;
