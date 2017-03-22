@@ -8,10 +8,11 @@ import { ApiUrlConstant } from './apiurl.constant';
 @Injectable()
 export class AuthenticationService {
   public token: string;
-
+  public loggedInUserName : string;
   constructor(private http: Http) {
     var currentUser = JSON.parse(localStorage.getItem(AppConstant.CURRENTUSERKEY));
     this.token = currentUser && currentUser.access_token;
+    this.loggedInUserName = currentUser && currentUser.username;
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -44,4 +45,6 @@ export class AuthenticationService {
     this.token = null;
     localStorage.removeItem(AppConstant.CURRENTUSERKEY);
   }
+
+  
 }

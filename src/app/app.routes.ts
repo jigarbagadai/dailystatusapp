@@ -17,8 +17,7 @@ const routes: Routes = [
   { path: 'setting/role', component: RoleComponent, canActivate: [AuthGuard] },
   { path: 'setting/activity', component: ActivityComponent, canActivate: [AuthGuard] },
   { path: 'setting/roleactivity', component: RoleActivityComponent, canActivate: [AuthGuard] },
-  { path: 'setting/timezone', component: TimeZoneComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '' }
+  { path: 'setting/timezone', component: TimeZoneComponent, canActivate: [AuthGuard] }
 ]
 
 export const routing = RouterModule.forRoot(routes);

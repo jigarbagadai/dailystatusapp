@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private _routeNames:RouteNames,private authService: AuthGuard, private router: Router){
     this._routeNames.name.subscribe(n => this.routeName = n);
     this.router.events.subscribe(res => {
-      if (res.url === "/login") {
+      if (res.url.indexOf("login")> -1) {
         this.displayHeader = false;
       }
       else
