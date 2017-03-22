@@ -1,4 +1,4 @@
-<div id="wrapper" *ngIf="displayHeader">
+<div id="wrapper" [hidden]="!displayHeader">
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <app-header></app-header>
     <app-leftpanel></app-leftpanel>
@@ -15,4 +15,4 @@
   </div>
   <!-- /#page-wrapper -->
 </div>
-<router-outlet *ngIf="!displayHeader"></router-outlet>
+<router-outlet [hidden]="displayHeader"></router-outlet>
