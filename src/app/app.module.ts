@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routes';
 import { BusyModule } from 'angular2-busy';
+import { ColumnComponent, DataTableComponent } from './Controls/index';
 
 import {
   LoginComponent, DashboardComponent, AuditReportComponent, ExceptionReportComponent, TimeReportComponent,
@@ -29,7 +30,9 @@ import { RouteNames, AuthGuard, AuthenticationService } from './Services/index';
     RoleActivityComponent,
     TimeZoneComponent,
     UsersComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ColumnComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
