@@ -1,5 +1,6 @@
 import { environment } from '../../environments/environment';
 
 export const ApiUrlConstant = {
-  LOGINURL: environment.apiUrl + '/token'
+  LOGINURL: environment.apiUrl + '/token',
+  GETALLROLESURL: environment.apiUrl + '/api/v1/Roles',
 }

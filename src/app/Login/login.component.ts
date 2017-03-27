@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { AuthenticationService } from '../Services/index';
 import { Subscription } from 'rxjs';
-
+import { RouteNames } from '../Services/index';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,8 @@ export class LoginComponent {
   busy: Subscription;
   returnUrl: string;
 
-  constructor(private route: ActivatedRoute,private router: Router, private authSerivce: AuthenticationService) {
+  constructor(private route: ActivatedRoute,private router: Router, private authSerivce: AuthenticationService,private _routeNames:RouteNames) {
+     this._routeNames.displayHeader.next(false);
   }
 
   ngOnInit() {

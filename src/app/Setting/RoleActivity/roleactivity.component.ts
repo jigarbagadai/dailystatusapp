@@ -8,6 +8,7 @@ import { RouteNames } from '../../Services/index';
 })
 export class RoleActivityComponent {
  constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('Role Activity');;
+    this._routeNames.name.next('Role Activity');
+    this._routeNames.displayHeader.next(true);
   }
 }

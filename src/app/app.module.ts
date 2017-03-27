@@ -12,7 +12,7 @@ import {
   UsersComponent, UserProfileComponent, AppComponent, HeaderComponent, LeftPanelComponent
 } from './index';
 
-import { RouteNames, AuthGuard, AuthenticationService } from './Services/index';
+import { RouteNames, AuthGuard, AuthenticationService,RoleService } from './Services/index';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { RouteNames, AuthGuard, AuthenticationService } from './Services/index';
     routing,
     BusyModule
   ],
-  providers: [RouteNames, AuthGuard, AuthenticationService],
+  providers: [RouteNames, AuthGuard, AuthenticationService,RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

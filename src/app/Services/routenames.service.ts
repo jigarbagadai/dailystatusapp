@@ -4,4 +4,5 @@ import {Subject} from 'rxjs/RX';
 @Injectable()
 export class RouteNames{
   public name = new Subject();
+  public displayHeader= new Subject();
 }

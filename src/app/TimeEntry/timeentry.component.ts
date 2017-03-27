@@ -8,6 +8,7 @@ import { RouteNames } from '../Services/index';
 })
 export class TimeEntryComponent {
  constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('Time Entry');;
+    this._routeNames.name.next('Time Entry');
+    this._routeNames.displayHeader.next(true);
   }
 }

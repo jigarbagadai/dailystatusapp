@@ -7,6 +7,7 @@ import { RouteNames } from '../../Services/index';
 })
 export class AuditReportComponent {
 constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('Audit Report');;
+    this._routeNames.name.next('Audit Report');
+    this._routeNames.displayHeader.next(true);
   }
 }

@@ -8,6 +8,7 @@ import { RouteNames } from '../../Services/index';
 })
 export class TimeZoneComponent {
  constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('Time Zone');;
+    this._routeNames.name.next('Time Zone');
+    this._routeNames.displayHeader.next(true);
   }
 }

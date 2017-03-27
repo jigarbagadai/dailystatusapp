@@ -8,6 +8,7 @@ import { RouteNames } from '../Services/index';
 })
 export class UserProfileComponent {
  constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('User Profile');;
+    this._routeNames.name.next('User Profile');
+    this._routeNames.displayHeader.next(true);
   }
 }

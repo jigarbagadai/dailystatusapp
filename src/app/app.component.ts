@@ -9,18 +9,19 @@ import { Router } from '@angular/router'
 })
 export class AppComponent {
   routeName:any = "Dashboard";
-  displayHeader: boolean;
+  displayHeader: any = false;
   constructor(private _routeNames:RouteNames,private authService: AuthGuard, private router: Router){
     this._routeNames.name.subscribe(n => this.routeName = n);
-    this.router.events.subscribe(res => {
-      if (res.url.indexOf("login")> -1) {
-        this.displayHeader = false;
-      }
-      else
-      {
-        this.displayHeader = true;
-      }
-    });
+    this._routeNames.displayHeader.subscribe(n => this.displayHeader = n);
+    // this.router.events.subscribe(res => {
+    //   if (res.url.indexOf("login")> -1) {
+    //     this.displayHeader = false;
+    //   }
+    //   else
+    //   {
+    //     this.displayHeader = true;
+    //   }
+    // });
   }
 
   public title = 'app works!';

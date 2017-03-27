@@ -7,6 +7,7 @@ import { RouteNames } from '../../Services/index';
 })
 export class TimeReportComponent {
 constructor(private _routeNames:RouteNames){
-    this._routeNames.name.next('Time Report');;
+    this._routeNames.name.next('Time Report');
+    this._routeNames.displayHeader.next(true);
   }
 }
