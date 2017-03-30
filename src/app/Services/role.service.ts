@@ -15,11 +15,11 @@ export class RoleService {
     this.sessiontoken = 'Bearer ' + tokenResponse.token.access_token;
   }
 
-  getAllRoles(serachtext: string, isActive: boolean, skiprecords: number, orderDirection: string, orderColumn: string): Observable<apiresponse> {
+  getAllRoles(serachtext: string, isActive: boolean, skiprecords: number, pagesize: number, orderDirection: string, orderColumn: string): Observable<apiresponse> {
     var headers = new Headers();
     headers.append('Authorization', this.sessiontoken);
 
-    return this.http.get(ApiUrlConstant.GETALLROLESURL + '/' + serachtext + '/' + isActive + '/' + skiprecords + '/' + orderDirection + '/' + orderColumn, {
+    return this.http.get(ApiUrlConstant.GETALLROLESURL + '/' + serachtext + '/' + isActive + '/' + skiprecords + '/' + pagesize + '/' + orderDirection + '/' + orderColumn, {
       headers: headers
     }).map((response: Response) => {
       let roles = response.json();

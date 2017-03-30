@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://localhost:9080'
+  apiUrl:'http://localhost:9080',
+  dateFormet:'dd/MM/yyyy',
+  pagingSize:2
 };

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-7" style="padding-top:8px;">
+    {{PagingInfo}}
+  </div>
+  <div class="col-sm-5">
+    <ul class="pagination pull-right" style="margin-top:0">
+      <ng-container *ngIf="currentpagenumber==1">
+        <li class="disabled"><a href="javascript:void(0)">Previous</a></li>
+      </ng-container>
+      <ng-container *ngIf="currentpagenumber!=1">
+        <li (click)="OnGridPaging('PREVIOUS')"><a href="javascript:void(0)">Previous</a></li>
+      </ng-container>
+
+      <ng-container *ngFor="let page of pages">
+        <ng-container *ngIf="page!=currentpagenumber">
+          <li (click)="OnGridPaging(page)"><a href="javascript:void(0)">{{page}}</a></li>
+        </ng-container>
+        <ng-container *ngIf="page==currentpagenumber">
+          <li class="active"><a href="javascript:void(0)">{{page}}</a></li>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="totalpage<=5">
+        <li class="disabled"><a href="javascript:void(0)">Next</a></li>
+      </ng-container>
+      <ng-container *ngIf="totalpage > 5">
+        <li (click)="OnGridPaging('NEXT')"><a href="javascript:void(0)">Next</a></li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

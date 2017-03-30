@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routes';
 import { BusyModule } from 'angular2-busy';
-import { ColumnComponent, DataTableComponent } from './Controls/index';
+import { ColumnComponent, DataTableComponent,paginationComponent } from './Controls/index';
 
 import {
   LoginComponent, DashboardComponent, AuditReportComponent, ExceptionReportComponent, TimeReportComponent,
@@ -12,7 +12,7 @@ import {
   UsersComponent, UserProfileComponent, AppComponent, HeaderComponent, LeftPanelComponent
 } from './index';
 
-import { RouteNames, AuthGuard, AuthenticationService,RoleService } from './Services/index';
+import { RouteNames, AuthGuard, AuthenticationService, RoleService } from './Services/index';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { RouteNames, AuthGuard, AuthenticationService,RoleService } from './Serv
     UsersComponent,
     UserProfileComponent,
     ColumnComponent,
-    DataTableComponent
+    DataTableComponent,
+    paginationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,7 @@ import { RouteNames, AuthGuard, AuthenticationService,RoleService } from './Serv
     routing,
     BusyModule
   ],
-  providers: [RouteNames, AuthGuard, AuthenticationService,RoleService],
+  providers: [RouteNames, AuthGuard, AuthenticationService, RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

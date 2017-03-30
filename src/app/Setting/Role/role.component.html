@@ -1,8 +1,41 @@
-<datatable [dataset]=roles>
-  <column [value]="'RoleId'" [header]="'RoleId'"></column>
-  <column [value]="'RoleName'" [header]="'RoleName'"></column>
-  <column [value]="'ModifiedBy'" [header]="'ModifiedBy'"></column>
-  <column [value]="'ModifiedDate'" [header]="'ModifiedDate'"></column>
-  <column [value]="'IsActive'" [header]="'IsActive'"></column>
-  <column [value]="'TotalRows'" [header]="'TotalRows'"></column>
-</datatable>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form role="form" class="form-inline">
+      <div class="form-group">
+        <label for="Name" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+          <input class="form-control " placeholder="Role Name" name="name" type="text" #rolename/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Status" class="col-sm-4 control-label">Status</label>
+        <div class="col-sm-8">
+          <select class="form-control" id="status" #status>
+              <option value="true" selected="selected">Active</option>
+              <option value="false">Inactive</option>
+        </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" id="btnGo" (click)="onSearchClick(rolename,status)">GO</button>
+    </form>
+  </div>
+  <div [ngBusy]="busy"></div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="table-responsive col-xs-12">
+      <datatable [dataset]=roles [sortkey]=sortKey [sortdirection]=sortDirection (onSorting)="OnRoleSorting($event)">
+        <column [value]="'RoleId'" [header]="'Id'" [ishidden]="'true'"></column>
+        <column [value]="'RoleName'" [header]="'Name'" [width]="'350px'"></column>
+        <column [value]="'ModifiedBy'" [header]="'Modified By'"></column>
+        <column [value]="'ModifiedDate'" [header]="'Modified Date'" [datatype]="'date'"></column>
+        <column [value]="'IsActive'" [header]="'Status'" [columnType]="'checkbox'" [width]="'80px'" [allowsort]="'false'"></column>
+        <column [value]="'RoleId'" [header]="'Edit'" [columnType]="'actionlink'" [contentClass]="'fa fa-edit fa-fw'" [width]="'50px'"
+          (actionClick)="onEditClick($event)" [allowsort]="'false'"></column>
+        <column [value]="'RoleId'" [header]="'Delete'" [columnType]="'actionlink'" [contentClass]="'fa fa-trash-o fa-fw'" [width]="'50px'"
+          (actionClick)="onDeleteClick($event)" [allowsort]="'false'"></column>
+      </datatable>
+      <pagination [currentpagenumber]="currentPage" [totalrecords]="totalRecords" (onPaging)="onGridPaging($event)"></pagination>
+    </div>
+  </div>
+</div>

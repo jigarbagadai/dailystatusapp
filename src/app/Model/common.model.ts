@@ -61,3 +61,4 @@ export interface apiresponse {
   ErrorMessages: Dictionary;
   ResponseData: any
 }
+

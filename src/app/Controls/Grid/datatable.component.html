@@ -1,12 +1,48 @@
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th *ngFor="let column of columns">{{column.header}}</th>
-    </tr>
-  </thead>
-  <tbody >
-    <tr *ngFor="let row of dataset">
-      <td *ngFor="let column of columns">{{row[column.value]}}</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns" [hidden]="column.ishidden" [attr.width]="column.width!='-1' ? column.width : null">
+          <ng-container *ngIf="column.allowsort=='true'">
+            <ng-container *ngIf="sortkey == column.value">
+              <ng-container *ngIf="sortdirection == 'ASC'">
+                <a href="javascript:void(0)" (click)="OnGridSorting(column.value,'DESC')">{{column.header}} <i class="fa fa-fw fa-sort-asc"></i></a>
+              </ng-container>
+              <ng-container *ngIf="sortdirection != 'ASC'">
+                <a href="javascript:void(0)" (click)="OnGridSorting(column.value,'ASC')">{{column.header}} <i class="fa fa-fw fa-sort-desc"></i></a>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="sortkey != column.value">
+              <a href="javascript:void(0)" (click)="OnGridSorting(column.value,'ASC')">{{column.header}} <i class="fa fa-fw fa-sort"></i></a>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="column.allowsort=='false'">
+            {{column.header}}
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of dataset">
+        <td *ngFor="let column of columns" [hidden]="column.ishidden">
+          <ng-container [ngSwitch]="column.columnType">
+            <ng-container *ngSwitchCase="'text'">
+              <ng-container [ngSwitch]="column.datatype">
+                <ng-container *ngSwitchCase="'string'">
+                  {{row[column.value]}}
+                </ng-container>
+                <ng-container *ngSwitchCase="'date'">
+                  {{row[column.value] | date: dateformat}}
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'checkbox'">
+              <input type="checkbox" disabled="disabled" [attr.checked]="row[column.value]" />
+            </ng-container>
+            <ng-container *ngSwitchCase="'actionlink'">
+              <a href="javascript:void(0)" (click)="column.ActionLinkClick(row[column.value])"><i [class]="column.contentClass"></i></a>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
