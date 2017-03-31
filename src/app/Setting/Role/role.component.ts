@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteNames, RoleService } from '../../Services/index';
+import { RouteNames, RoleService, AlertService } from '../../Services/index';
 import { apiresponse, pagedataresponse } from '../../Model/index';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -19,7 +19,7 @@ export class RoleComponent implements OnInit {
   status: boolean = true;
   pagingresponse: pagedataresponse;
 
-  constructor(private _routeNames: RouteNames, private _roleService: RoleService) {
+  constructor(private _routeNames: RouteNames, private _roleService: RoleService, private alertService: AlertService) {
     this._routeNames.name.next('Roles');
     this._routeNames.displayHeader.next(true);
   }
@@ -29,6 +29,7 @@ export class RoleComponent implements OnInit {
   }
 
   onEditClick(id) {
+    this.alertService.success('Edit click ', true);
     console.log("Edit - Role component called... id:" + id);
   }
 
@@ -58,10 +59,9 @@ export class RoleComponent implements OnInit {
   }
 
   BindGrid() {
-    let skipRecords:number = (parseInt(this.currentPage) - 1)  * environment.pagingSize;
-    if(skipRecords < 0)
-    {
-       skipRecords = 0; 
+    let skipRecords: number = (parseInt(this.currentPage) - 1) * environment.pagingSize;
+    if (skipRecords < 0) {
+      skipRecords = 0;
     }
 
     this.busy = this._roleService.getAllRoles(this.roleName, this.status, skipRecords, environment.pagingSize, this.sortDirection, this.sortKey).subscribe(
