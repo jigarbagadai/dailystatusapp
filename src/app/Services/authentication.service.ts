@@ -8,7 +8,7 @@ import { ApiUrlConstant } from './apiurl.constant';
 @Injectable()
 export class AuthenticationService {
   public token: string;
-  public loggedInUserName : string;
+  public loggedInUserName: string;
   constructor(private http: Http) {
     var currentUser = JSON.parse(localStorage.getItem(AppConstant.CURRENTUSERKEY));
     this.token = currentUser && currentUser.access_token;
@@ -38,7 +38,7 @@ export class AuthenticationService {
           // return false to indicate failed login
           return false;
         }
-      });
+      }).catch(this.handleError);
   }
 
   logout(): void {
@@ -46,5 +46,11 @@ export class AuthenticationService {
     localStorage.removeItem(AppConstant.CURRENTUSERKEY);
   }
 
-  
+  private handleError(error: any) {
+    let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg); // log to console instead
+    return Observable.throw(errMsg);
+  }
+
 }

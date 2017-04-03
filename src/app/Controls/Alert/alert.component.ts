@@ -3,7 +3,19 @@ import { AlertService } from '../../Services/alert.service'
 
 @Component({
   selector: 'alert',
-  templateUrl: 'alert.component.html'
+  templateUrl: 'alert.component.html',
+  styles: [`
+    #alertmessage
+    {
+      position: fixed;
+      top: 0px;
+      width: 50%;
+      z-index: 2000;
+      height: 35px;
+      padding: 5px;
+      padding-left: 10px;
+    }
+  `]
 })
 
 export class AlertComponent implements OnInit {
@@ -17,5 +29,9 @@ export class AlertComponent implements OnInit {
     this.alertService.getMessage().subscribe(
       message => { this.message = message; }
     );
+  }
+
+  CloseMessage() {
+    this.message = "";
   }
 }

@@ -29,7 +29,7 @@ export class RoleComponent implements OnInit {
   }
 
   onEditClick(id) {
-    this.alertService.success('Edit click ', true);
+    this.alertService.error('Edit click ', true);
     console.log("Edit - Role component called... id:" + id);
   }
 
@@ -74,6 +74,8 @@ export class RoleComponent implements OnInit {
           this.sortKey = this.pagingresponse.SortKey;
           this.sortDirection = this.pagingresponse.SortDirection;
         }
+      }, error => {
+        this.alertService.error('Error while retrive Role Data: ' + error, true);
       }
     );
   }
