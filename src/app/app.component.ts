@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { RouteNames,AuthGuard } from './Services/index';
+import { Component } from '@angular/core';
+import { RouteNames, AuthGuard } from './Services/index';
 import { Router } from '@angular/router'
 
 @Component({
@@ -8,9 +8,10 @@ import { Router } from '@angular/router'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  routeName:any = "Dashboard";
+  routeName: any = "Dashboard";
   displayHeader: any = false;
-  constructor(private _routeNames:RouteNames,private authService: AuthGuard, private router: Router){
+
+  constructor(private _routeNames: RouteNames, private authService: AuthGuard, private router: Router) {
     this._routeNames.name.subscribe(n => this.routeName = n);
     this._routeNames.displayHeader.subscribe(n => this.displayHeader = n);
     // this.router.events.subscribe(res => {

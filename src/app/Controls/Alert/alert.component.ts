@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../Services/alert.service'
 
 @Component({
-  selector: 'alert',
+  selector: 'dailystatus-alert',
   templateUrl: 'alert.component.html',
   styles: [`
     #alertmessage

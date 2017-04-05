@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouteNames, RoleService, AlertService } from '../../Services/index';
 import { apiresponse, pagedataresponse } from '../../Model/index';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { ModalDirective } from 'ng2-bootstrap';
 
 @Component({
   selector: 'app-role',
@@ -18,6 +19,8 @@ export class RoleComponent implements OnInit {
   totalRecords: any;
   status: boolean = true;
   pagingresponse: pagedataresponse;
+  deleteRoleId: number = 0;
+  @ViewChild('childModal') public childModal: ModalDirective;
 
   constructor(private _routeNames: RouteNames, private _roleService: RoleService, private alertService: AlertService) {
     this._routeNames.name.next('Roles');
@@ -34,7 +37,25 @@ export class RoleComponent implements OnInit {
   }
 
   onDeleteClick(id) {
-    console.log("Delete - Role component called... id:" + id);
+    this.deleteRoleId = id;
+    this.childModal.show();
+  }
+
+  OnDeleteConfirmationClick(id) {
+    this.busy = this._roleService.deleteRole(id).subscribe(
+      result => {
+        if (result.ResponseStatus == 0) {
+          this.childModal.hide();
+          this.BindGrid();
+        }
+        else {
+          this.alertService.error('not able to delete role records.', true);
+        }
+      }, error => {
+        this.alertService.error('oops.. something wrong happend', true);
+        console.log("ERROR: Delete Role:" + error)
+      }
+    );
   }
 
   OnRoleSorting(sortingparams) {
@@ -75,7 +96,8 @@ export class RoleComponent implements OnInit {
           this.sortDirection = this.pagingresponse.SortDirection;
         }
       }, error => {
-        this.alertService.error('Error while retrive Role Data: ' + error, true);
+        this.alertService.error('oops.. something wrong happend', true);
+        console.log("ERROR: GETALLROLE:" + error)
       }
     );
   }

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angu
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'pagination',
+  selector: 'dailystatus-pagination',
   templateUrl: 'pagination.component.html'
 })
 

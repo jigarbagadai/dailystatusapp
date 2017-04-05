@@ -35,7 +35,28 @@
         <column [value]="'RoleId'" [header]="'Delete'" [columnType]="'actionlink'" [contentClass]="'fa fa-trash-o fa-fw'" [width]="'50px'"
           (actionClick)="onDeleteClick($event)" [allowsort]="'false'"></column>
       </datatable>
-      <pagination [currentpagenumber]="currentPage" [totalrecords]="totalRecords" (onPaging)="onGridPaging($event)"></pagination>
+      <dailystatus-pagination [currentpagenumber]="currentPage" [totalrecords]="totalRecords" (onPaging)="onGridPaging($event)"></dailystatus-pagination>
+    </div>
+  </div>
+  
+  <!--<dialog #confirmation [message]="'Are you sure, you want to delete Selected Role?'" [title]="'Delete Role?'"></dialog>-->
+  <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Delete Role?</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="childModal.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete selected role ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  (click)="OnDeleteConfirmationClick(deleteRoleId)">Yes</button>
+          <button type="button" class="btn btn-primary"  (click)="childModal.hide()">No</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

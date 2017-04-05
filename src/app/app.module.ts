@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routes';
 import { BusyModule } from 'angular2-busy';
-import { ColumnComponent, DataTableComponent, paginationComponent, AlertComponent } from './Controls/index';
+import { ColumnComponent, DataTableComponent, paginationComponent, AlertComponent,ConfirmationDialogComponent } from './Controls/index';
+import { Ng2BootstrapModule , ModalModule } from 'ng2-bootstrap';
+
 
 import {
   LoginComponent, DashboardComponent, AuditReportComponent, ExceptionReportComponent, TimeReportComponent,
@@ -34,14 +36,16 @@ import { RouteNames, AuthGuard, AuthenticationService, RoleService, AlertService
     ColumnComponent,
     DataTableComponent,
     paginationComponent,
-    AlertComponent
+    AlertComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
-    BusyModule
+    BusyModule,
+    ModalModule.forRoot()
   ],
   providers: [RouteNames, AuthGuard, AuthenticationService, RoleService, AlertService],
   bootstrap: [AppComponent]

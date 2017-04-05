@@ -4,7 +4,7 @@
     <app-leftpanel></app-leftpanel>
   </nav>
   <div [attr.id]="displayHeader ? 'page-wrapper' : null">
-    <alert></alert>
+    <dailystatus-alert></dailystatus-alert>
     <div class="row" *ngIf="displayHeader==true">
       <div class="col-lg-12">
         <h3 class="page-header">{{routeName}}</h3>
@@ -12,7 +12,6 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-
         <router-outlet></router-outlet>
       </div>
       <!-- /.col-lg-12 -->

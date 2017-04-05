@@ -27,6 +27,17 @@ export class RoleService {
     }).catch(this.handleError);
   }
 
+  deleteRole(roleId: number): Observable<apiresponse> {
+    var headers = new Headers();
+    headers.append('Authorization', this.sessiontoken);
+
+    return this.http.post(ApiUrlConstant.DELETEROLE + '/' + roleId, {}, {
+      headers: headers
+    }).map((response: Response) => {
+      return response.json();
+    }).catch(this.handleError);
+  }
+
   private handleError(error: any) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
